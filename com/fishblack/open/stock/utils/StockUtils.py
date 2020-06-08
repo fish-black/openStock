@@ -1,12 +1,15 @@
 import baostock as bs
 import pandas as pd
+
+from com.fishblack.open.stock.client import StockException
+from com.fishblack.open.stock.client.StockAPI import StockAPI
 import os
 
 #### 登陆系统 ####
-lg = bs.login()
-# 显示登陆返回信息
-print('login respond error_code:'+lg.error_code)
-print('login respond  error_msg:'+lg.error_msg)
+try:
+    StockAPI().login()
+except StockException as e:
+    print(e)
 
 stockP = "sz"
 stockCode = "002635"
