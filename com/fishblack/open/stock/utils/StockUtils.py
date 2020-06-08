@@ -31,4 +31,7 @@ result.to_csv("C:\\Work\\Project\\Python\\openStock\\output\\data\\"+stockP+"_"+
 print(result)
 
 #### 登出系统 ####
-bs.logout()
+try:
+    StockAPI().logout()
+except StockException as e:
+    print(e)
