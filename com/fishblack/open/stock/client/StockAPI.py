@@ -30,7 +30,7 @@ class StockAPI:
         stock_data = stock_rs.get_data()
         return stock_data
 
-    def query_history_k_data_plus(self, code, columns, start_date, end_date):
-        stock_k_data = bs.query_history_k_data_plus(code, columns, start_date, end_date)
+    def query_history_k_data_plus(self, code, columns, start_date, end_date, frequency, adjustflag):
+        stock_k_data = bs.query_history_k_data_plus(code, columns, start_date, end_date, frequency, adjustflag)
         return stock_k_data
 

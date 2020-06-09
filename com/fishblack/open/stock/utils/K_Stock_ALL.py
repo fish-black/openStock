@@ -19,7 +19,7 @@ for index in stock_data.code.index:
     name = stock_data["code_name"].get(index)
     print("Downloading :" + code + " " + name)
 
-    k_rs = bao_stock_client.query_history_k_data_plus(code, "date,code,open,high,low,close", today, today)
+    k_rs = bao_stock_client.query_history_k_data_plus(code, "date,code,open,high,low,close", today, today, frequency="d", adjustflag="3")
     data_df = pd.DataFrame()
     data_df = data_df.append(k_rs.get_data())
     data_df.to_csv("C:\\Work\\Project\\Python\\openStock\\output\\data\\" + code + "_data.csv", encoding="gbk", index=False)
