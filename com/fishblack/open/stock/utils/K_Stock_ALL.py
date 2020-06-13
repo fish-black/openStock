@@ -6,7 +6,7 @@ from com.fishblack.open.stock.client.StockAPI import StockAPI
 bao_stock_client = StockAPI()
 today = datetime.date.today().strftime('%Y-%m-%d')
 today = '2020-06-12'
-quarter_start = '2020-01-01'
+quarter_start = '2020-04-01'
 quarter_end = '2020-06-12'
 
 try:
@@ -27,7 +27,7 @@ else:
         print("Downloading :" + code + " " + name)
 
         forecast_rs = bao_stock_client.query_stock_forecast_report_summary(code, quarter_start, quarter_end)
-        if len(forecast_rs.data) > 0 and (forecast_rs.data[0][3] == '预增' or forecast_rs.data[0][3] == '略增' or forecast_rs.data[0][3] == '续盈' or forecast_rs.data[0][3] == '扭亏'):
+        if len(forecast_rs.data) > 0 and (forecast_rs.data[0][3] == '预增' or forecast_rs.data[0][3] == '略增' or forecast_rs.data[0][3] == '续盈'):
             k_rs = bao_stock_client.query_history_k_data_plus(code, "code,open,high,low,close,peTTM", today, today,
                                                               frequency="d", adjustflag="3")
             extend = pd.DataFrame(k_rs.data)
@@ -49,8 +49,8 @@ else:
     data_df.rename(columns={data_df.columns[4]: "收盘"}, inplace=True)
     data_df.rename(columns={data_df.columns[5]: "市盈率"}, inplace=True)
     data_df.rename(columns={data_df.columns[6]: "名称"}, inplace=True)
-    data_df.rename(columns={data_df.columns[7]: "预估"}, inplace=True)
-    data_df.rename(columns={data_df.columns[8]: "总结"}, inplace=True)
+    data_df.rename(columns={data_df.columns[7]: "业绩预估"}, inplace=True)
+    data_df.rename(columns={data_df.columns[8]: "业绩"}, inplace=True)
     data_df['市盈率'] = pd.to_numeric(data_df['市盈率'])
     data_df['最高'] = pd.to_numeric(data_df['最高'])
     data_df['最低'] = pd.to_numeric(data_df['最低'])
