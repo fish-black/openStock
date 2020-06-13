@@ -34,3 +34,11 @@ class StockAPI:
         stock_k_data = bs.query_history_k_data_plus(code, columns, start_date, end_date, frequency, adjustflag)
         return stock_k_data
 
+    def query_hangye(self):
+        pass
+
+    def query_stock_forecast_report_summary(self, code, start_date, end_date):
+        forecast_report_data = bs.query_forecast_report(code, start_date=start_date, end_date=end_date)
+        return forecast_report_data
+
+
