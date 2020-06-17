@@ -41,4 +41,7 @@ class StockAPI:
         forecast_report_data = bs.query_forecast_report(code, start_date=start_date, end_date=end_date)
         return forecast_report_data
 
+    def query_stock_industry(self, code):
+        industry_data = bs.query_stock_industry(code)
+        return industry_data
 
